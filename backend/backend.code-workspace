@@ -1,0 +1,110 @@
+{
+  "folders": [
+    {
+      "path": "..",
+      "name": "📦 Root"
+    },
+    {
+      "path": ".",
+      "name": "🔗 Backend (Current)"
+    },
+    {
+      "path": "../frontend/shared",
+      "name": "🔧 Frontend Shared"
+    }
+  ],
+  "settings": {
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "[solidity]": {
+      "editor.defaultFormatter": "JuanBlanco.solidity",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 4
+    },
+    "[json]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.cache": true,
+      "**/artifacts": true
+    },
+    "editor.rulers": [80, 120]
+  },
+  "extensions": {
+    "recommendations": [
+      "JuanBlanco.solidity",
+      "esbenp.prettier-vscode",
+      "ms-python.python",
+      "eamodio.gitlens"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Run Tests",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/node_modules/.bin/hardhat",
+        "args": ["test"],
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Start Node",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/node_modules/.bin/hardhat",
+        "args": ["node"],
+        "console": "integratedTerminal"
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Install Dependencies",
+        "type": "shell",
+        "command": "npm",
+        "args": ["install"],
+        "group": {"kind": "build"}
+      },
+      {
+        "label": "Compile Contracts",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "compile"],
+        "group": {"kind": "build"}
+      },
+      {
+        "label": "Run Tests",
+        "type": "shell",
+        "command": "npm",
+        "args": ["test"],
+        "group": {"kind": "test", "isDefault": true}
+      },
+      {
+        "label": "Start Local Node",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "node"],
+        "isBackground": true,
+        "group": {"kind": "build"}
+      },
+      {
+        "label": "Deploy Contracts",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "deploy-local"],
+        "group": {"kind": "build"}
+      }
+    ]
+  }
+}

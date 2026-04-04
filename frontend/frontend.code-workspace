@@ -1,0 +1,84 @@
+{
+  "folders": [
+    {
+      "path": "..",
+      "name": "📦 Root"
+    },
+    {
+      "path": ".",
+      "name": "🎨 Frontend (Current)"
+    },
+    {
+      "path": "admin",
+      "name": "👨‍💼 Admin Dashboard"
+    },
+    {
+      "path": "institution",
+      "name": "🏢 Institution Dashboard"
+    },
+    {
+      "path": "student",
+      "name": "📚 Student Dashboard"
+    },
+    {
+      "path": "employer",
+      "name": "💼 Employer Dashboard"
+    },
+    {
+      "path": "shared",
+      "name": "🔧 Shared Resources"
+    }
+  ],
+  "settings": {
+    "[html]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "[css]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "editor.rulers": [80, 120],
+    "editor.renderWhitespace": "trailing"
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "ritwickdey.LiveServer",
+      "eamodio.gitlens"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Setup: Copy Libraries",
+        "type": "shell",
+        "command": "bash",
+        "args": ["setup.sh"],
+        "group": {"kind": "build", "isDefault": true}
+      },
+      {
+        "label": "Server: Start (Port 5500)",
+        "type": "shell",
+        "command": "python",
+        "args": ["-m", "http.server", "5500"],
+        "isBackground": true,
+        "group": {"kind": "build"},
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true
+        }
+      }
+    ]
+  }
+}

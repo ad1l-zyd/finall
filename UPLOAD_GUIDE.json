@@ -1,0 +1,118 @@
+{
+  "uploadGuide": {
+    "institutions": {
+      "description": "Register multiple institutions at once",
+      "file": "sample-institutions.json",
+      "fields": {
+        "name": {
+          "type": "string",
+          "description": "Institution name (e.g., 'ABC University')",
+          "required": true
+        },
+        "physicalAddress": {
+          "type": "string",
+          "description": "Street address, city, country",
+          "required": true
+        },
+        "publicAddr": {
+          "type": "string",
+          "description": "Ethereum address (0x...)",
+          "required": true,
+          "format": "0x followed by 40 hex characters"
+        },
+        "did": {
+          "type": "string",
+          "description": "Decentralized Identifier",
+          "required": true,
+          "format": "did:ethr:{publicAddr}"
+        }
+      },
+      "example": {
+        "name": "ABC University",
+        "physicalAddress": "123 Main Street, New York, USA",
+        "publicAddr": "0x70997970C51812e339D9B73b0245ad39437eSc5d",
+        "did": "did:ethr:0x70997970C51812e339D9B73b0245ad39437eSc5d"
+      }
+    },
+    "certificates": {
+      "description": "Issue multiple certificates at once",
+      "file": "sample-certificates.json",
+      "fields": {
+        "studentName": {
+          "type": "string",
+          "description": "Full name of the certificate holder",
+          "required": true
+        },
+        "certificateType": {
+          "type": "string",
+          "description": "Type of certificate (degree, diploma, etc.)",
+          "required": true
+        },
+        "issuerName": {
+          "type": "string",
+          "description": "Name of issuing institution",
+          "required": true
+        },
+        "issuerAddress": {
+          "type": "string",
+          "description": "Ethereum address of issuing institution",
+          "required": true
+        },
+        "issuanceDate": {
+          "type": "string",
+          "description": "Date certificate was issued",
+          "required": true,
+          "format": "YYYY-MM-DD"
+        },
+        "certHash": {
+          "type": "string",
+          "description": "Keccak256 hash of certificate data",
+          "required": true,
+          "format": "0x followed by 64 hex characters"
+        },
+        "ipfsCID": {
+          "type": "string",
+          "description": "IPFS content identifier for certificate",
+          "required": true,
+          "format": "Qm followed by content hash"
+        }
+      },
+      "example": {
+        "studentName": "John Doe",
+        "certificateType": "Bachelor of Science in Computer Science",
+        "issuerName": "ABC University",
+        "issuerAddress": "0x70997970C51812e339D9B73b0245ad39437eSc5d",
+        "issuanceDate": "2024-05-15",
+        "certHash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+        "ipfsCID": "QmXxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    },
+    "hardhatTestAccounts": [
+      {
+        "account": 0,
+        "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "role": "Admin"
+      },
+      {
+        "account": 1,
+        "address": "0x70997970C51812e339D9B73b0245ad39437eSc5d",
+        "role": "Institution 1"
+      },
+      {
+        "account": 2,
+        "address": "0x3C44CdDdB6a900c6D2b8371300141F16C21f97ef",
+        "role": "Institution 2"
+      },
+      {
+        "account": 3,
+        "address": "0x8ba1f109551bD432803012645Ac136ddd64DBA72",
+        "role": "Institution 3"
+      },
+      {
+        "account": 4,
+        "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "role": "Institution 4"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "💼 Employer Dashboard"
+    },
+    {
+      "path": "../shared",
+      "name": "🔧 Shared Resources"
+    },
+    {
+      "path": "../..",
+      "name": "📦 Root"
+    }
+  ],
+  "settings": {
+    "[html]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "[css]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "editor.rulers": [80, 120]
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "ritwickdey.LiveServer"
+    ]
+  }
+}

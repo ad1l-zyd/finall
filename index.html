@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Credential Verification System - Portal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      --radius: 10px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+    .container {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px;
+      max-width: 600px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      color: #667eea;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .dashboards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .dashboard-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      border: 2px solid transparent;
+    }
+    .dashboard-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .admin {
+      background: linear-gradient(135deg, #1f6feb 0%, #0f4bd8 100%);
+      color: white;
+    }
+    .admin:hover {
+      border-color: #1f6feb;
+    }
+    .institution {
+      background: linear-gradient(135deg, #2b6cb0 0%, #1f4f9a 100%);
+      color: white;
+    }
+    .institution:hover {
+      border-color: #2b6cb0;
+    }
+    .student {
+      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      color: white;
+    }
+    .student:hover {
+      border-color: #7c3aed;
+    }
+    .employer {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: white;
+    }
+    .employer:hover {
+      border-color: #059669;
+    }
+    .dashboard-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .dashboard-name {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .info {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #666;
+      text-align: left;
+      margin-top: 20px;
+    }
+    .info h3 {
+      margin: 0 0 8px 0;
+      color: #333;
+      font-size: 14px;
+    }
+    .info p {
+      margin: 6px 0;
+    }
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+      font-size: 13px;
+      justify-content: center;
+    }
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .status-indicator.ok {
+      background: #059669;
+    }
+    .status-indicator.warning {
+      background: #f59e0b;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    @media (max-width: 500px) {
+      .container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      .dashboards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🔐 Credential Verification System</h1>
+    <p class="subtitle">Blockchain-based certificate management & verification</p>
+
+    <div class="dashboards">
+      <a href="frontend/admin/" class="dashboard-link admin">
+        <div class="dashboard-icon">👨‍💼</div>
+        <div class="dashboard-name">Admin</div>
+      </a>
+
+      <a href="frontend/institution/" class="dashboard-link institution">
+        <div class="dashboard-icon">🏢</div>
+        <div class="dashboard-name">Institution</div>
+      </a>
+
+      <a href="frontend/student/" class="dashboard-link student">
+        <div class="dashboard-icon">📚</div>
+        <div class="dashboard-name">Student</div>
+      </a>
+
+      <a href="frontend/employer/" class="dashboard-link employer">
+        <div class="dashboard-icon">💼</div>
+        <div class="dashboard-name">Employer</div>
+      </a>
+    </div>
+
+    <div class="info">
+      <h3>⚙️ System Status</h3>
+      <p><strong>Blockchain:</strong> Ensure Hardhat node is running at <code>http://127.0.0.1:8545</code></p>
+      <p><strong>Contracts:</strong> Run <code>npm run deploy-local</code> in the backend folder</p>
+      <p><strong>Configuration:</strong> Update <code>frontend/shared/config.js</code> with deployed contract addresses</p>
+      
+      <div class="status">
+        <div class="status-indicator warning"></div>
+        Check prerequisites before accessing dashboards
+      </div>
+    </div>
+
+    <div class="info" style="margin-top: 15px; background: #f0f7ff; border-left: 4px solid #1f6feb;">
+      <h3>📖 Getting Started</h3>
+      <p>1. Start blockchain: <code>cd backend && npm run node</code></p>
+      <p>2. Deploy contracts: <code>npm run deploy-local</code></p>
+      <p>3. Update config and access dashboards above</p>
+    </div>
+  </div>
+
+</body>
+</html>

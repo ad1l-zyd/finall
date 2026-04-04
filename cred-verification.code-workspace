@@ -1,0 +1,219 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "📦 Root"
+    },
+    {
+      "path": "backend",
+      "name": "🔗 Backend (Blockchain)"
+    },
+    {
+      "path": "frontend",
+      "name": "🎨 Frontend (Web)"
+    },
+    {
+      "path": "frontend/admin",
+      "name": "👨‍💼 Admin Dashboard"
+    },
+    {
+      "path": "frontend/institution",
+      "name": "🏢 Institution Dashboard"
+    },
+    {
+      "path": "frontend/student",
+      "name": "📚 Student Dashboard"
+    },
+    {
+      "path": "frontend/employer",
+      "name": "💼 Employer Dashboard"
+    },
+    {
+      "path": "frontend/shared",
+      "name": "🔧 Shared Resources"
+    }
+  ],
+  "settings": {
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "[solidity]": {
+      "editor.defaultFormatter": "JuanBlanco.solidity",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 4
+    },
+    "[html]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "[css]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "[markdown]": {
+      "editor.wordWrap": "on",
+      "editor.formatOnSave": false
+    },
+    "[json]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
+    },
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.cache": true,
+      "**/artifacts": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.cache": true,
+      "**/artifacts": true,
+      "**/artifacts": true
+    },
+    "editor.rulers": [80, 120],
+    "editor.renderWhitespace": "trailing",
+    "editor.trimAutoWhitespace": true
+  },
+  "extensions": {
+    "recommendations": [
+      "JuanBlanco.solidity",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "eamodio.gitlens",
+      "ms-vscode.makefile-tools",
+      "redhat.vscode-yaml"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Hardhat Test",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder:🔗 Backend (Blockchain)}/node_modules/.bin/hardhat",
+        "args": ["test"],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      },
+      {
+        "name": "Hardhat Node",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder:🔗 Backend (Blockchain)}/node_modules/.bin/hardhat",
+        "args": ["node"],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Backend: Install Dependencies",
+        "type": "shell",
+        "command": "npm",
+        "args": ["install"],
+        "options": {
+          "cwd": "${workspaceFolder:🔗 Backend (Blockchain)}"
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      },
+      {
+        "label": "Backend: Compile Contracts",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "compile"],
+        "options": {
+          "cwd": "${workspaceFolder:🔗 Backend (Blockchain)}"
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      },
+      {
+        "label": "Backend: Run Tests",
+        "type": "shell",
+        "command": "npm",
+        "args": ["test"],
+        "options": {
+          "cwd": "${workspaceFolder:🔗 Backend (Blockchain)}"
+        },
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "Backend: Start Local Node",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "node"],
+        "options": {
+          "cwd": "${workspaceFolder:🔗 Backend (Blockchain)}"
+        },
+        "isBackground": true,
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      },
+      {
+        "label": "Backend: Deploy Local",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "deploy-local"],
+        "options": {
+          "cwd": "${workspaceFolder:🔗 Backend (Blockchain)}"
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      },
+      {
+        "label": "Frontend: Setup Libraries",
+        "type": "shell",
+        "command": "bash",
+        "args": ["frontend/setup.sh"],
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      },
+      {
+        "label": "Frontend: Start Web Server",
+        "type": "shell",
+        "command": "python",
+        "args": ["-m", "http.server", "5500"],
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "isBackground": true,
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      }
+    ]
+  }
+}

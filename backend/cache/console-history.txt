@@ -1,0 +1,32 @@
+console.log(code === "0x" ? "NO CONTRACT at address" : "CONTRACT PRESENT, bytecode length: " + code.length);
+const code = await provider.getCode(addr);
+const addr = "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512";
+}const provider = ethers.provider;
+console.log("bytecode length:", code.length);
+console.log("code === '0x' ?", code === "0x");
+const code = await provider.getCode(registryAddr);
+const registryAddr = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"; // change if your HTML uses a different address
+const provider = ethers.provider;
+}
+  try { console.log("admin:", await registry.admin()); } catch(e) { console.log("admin() not present or call failed:", e.message); }
+  console.log("attached OK; try reading admin or a known getter:");
+} else {
+  console.log("attach failed:", registry.message);
+if (registry instanceof Error) {
+const registry = await ethers.getContractAt("InstitutionRegistry", addr).catch(e=>e);
+// replace ContractName with the actual contract you deployed (InstitutionRegistry or CertificateRegistry)
+console.log(code === "0x" ? "NO CONTRACT at that address" : "CONTRACT PRESENT, bytecode length: " + code.length);
+const code = await provider.getCode(addr);
+const addr = "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512"; // address shown in your log
+const provider = ethers.provider;
+}
+  console.log("admin:", await registry.admin());
+if (registry instanceof Error) { console.log("attach failed:", registry.message); } else {
+const registry = await ethers.getContractAt("InstitutionRegistry", registryAddr).catch(e=>e);
+const registryAddr = "0xYOUR_REGISTRY_ADDRESS"; // replace with the address your UI uses
+console.log(code.slice(0,100)); // prints the first 100 chars of the bytecode for quick inspection
+console.log("bytecode length:", code.length);
+console.log("code === '0x' ?", code === "0x");
+const code = await provider.getCode(registryAddr);
+const registryAddr = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+const provider = ethers.provider;

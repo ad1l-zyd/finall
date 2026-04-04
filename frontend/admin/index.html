@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Dashboard - Credential Verification</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../shared/styles/main.css">
+  <style>
+    :root {
+      --accent: #1f6feb;
+      --shadow: 0 6px 18px rgba(31, 111, 235, 0.08);
+    }
+    header {
+      background: linear-gradient(90deg, #0f4bd8, #1f6feb);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <button id="nav-pending" class="active" onclick="show('pending')">Approvals Pending</button>
+      <button id="nav-history" onclick="show('history')">History</button>
+      <button id="nav-removal" onclick="show('removal')">Removal</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <!-- Left column -->
+      <div>
+
+        <!-- A) Approvals Pending -->
+        <section id="pending" class="card">
+          <h2>Approvals Pending</h2>
+          <div class="small muted">Institutions that have submitted registration requests. Approve or reject each.</div>
+
+          <div style="margin-top:12px">
+            <button id="refreshPendingBtn" class="btn ghost">Refresh Pending</button>
+            <ul id="pendingList" class="list" style="margin-top:12px"></ul>
+          </div>
+        </section>
+
+        <!-- B) History -->
+        <section id="history" class="card" style="display:none">
+          <h2>History</h2>
+          <div class="small muted">Previously approved or rejected institutions (most recent first).</div>
+          <div style="margin-top:12px">
+            <button id="refreshHistoryBtn" class="btn ghost">Refresh History</button>
+            <ul id="historyList" class="list" style="margin-top:12px"></ul>
+          </div>
+        </section>
+
+        <!-- C) Removal -->
+        <section id="removal" class="card" style="display:none">
+          <h2>Removal</h2>
+          <div class="small muted">Remove an institution from the registry.</div>
+          <div style="margin-top:12px">
+            <button id="refreshRegisteredBtn" class="btn ghost">Load Registered Institutions</button>
+            <ul id="registeredList" class="list" style="margin-top:12px"></ul>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right column: controls -->
+      <aside>
+        <div class="card">
+          <h3>Admin Controls</h3>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button class="btn" id="connectWalletBtn">Load Local Wallet</button>
+            <button class="btn ghost" id="refreshAllBtn">Refresh All Lists</button>
+            <button class="btn ghost" id="clearAdminKeyBtn">Forget Key</button>
+          </div>
+          <div style="margin-top:12px" class="small muted">
+            Wallet: <span id="walletAddr">not connected</span><br>
+            Network: <span id="network">unknown</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Notes</h3>
+          <div class="muted">This admin UI manages institution registration approvals, rejections, and removal. Connect your admin wallet to get started.</div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer>Admin Dashboard • Institution approvals & registry management</footer>
+
+  <!-- Shared libraries and utilities -->
+  <script src="../shared/libs/ethers.umd.min.js"></script>
+  <script src="../shared/config.js"></script>
+  <script src="../shared/utils/blockchain.js"></script>
+  <script src="../shared/utils/ui.js"></script>
+
+  <!-- Admin-specific scripts -->
+  <script src="js/pending.js"></script>
+  <script src="js/handlers.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

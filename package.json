@@ -1,0 +1,29 @@
+{
+  "name": "credential-verification-system",
+  "version": "1.0.0",
+  "description": "A complete blockchain-based credential verification system with Ethereum smart contracts and modular frontend dashboards",
+  "private": true,
+  "scripts": {
+    "setup": "npm run setup:frontend && npm run setup:backend",
+    "setup:frontend": "bash frontend/setup.sh",
+    "setup:backend": "cd backend && npm install",
+    "backend": "cd backend && npm run node",
+    "deploy": "cd backend && npm run deploy-local",
+    "test": "cd backend && npm test",
+    "clean": "rm -rf backend/artifacts backend/cache frontend/shared/libs/ethers.umd.min.js"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "credentials",
+    "verification",
+    "smart-contracts",
+    "hardhat"
+  ],
+  "author": "",
+  "license": "MIT",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}

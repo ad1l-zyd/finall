@@ -1,0 +1,150 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\u1222990\\Documents\\block\\cred-verification\\backend\\contracts\\CertificateRegistry.sol": {
+      "lastModificationDate": 1775301632295,
+      "contentHash": "bdb3334ec16c45833a4f6e39be442770",
+      "sourceName": "contracts/CertificateRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "CertificateRegistry",
+        "IInstitutionRegistry"
+      ]
+    },
+    "C:\\Users\\u1222990\\Documents\\block\\cred-verification\\backend\\contracts\\InstitutionRegistry.sol": {
+      "lastModificationDate": 1775216426228,
+      "contentHash": "88249eed70e09ec6fb7be594584292dd",
+      "sourceName": "contracts/InstitutionRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "InstitutionRegistry"
+      ]
+    },
+    "C:\\Users\\u1222990\\Documents\\block\\cred-verification\\backend\\contracts\\Lock.sol": {
+      "lastModificationDate": 1775216426231,
+      "contentHash": "5daa40c22d3a9841af8edcaaabc57c7c",
+      "sourceName": "contracts/Lock.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.28"
+      ],
+      "artifacts": [
+        "Lock"
+      ]
+    },
+    "C:\\Users\\u1222990\\Documents\\block\\cred-verification\\backend\\contracts\\StudentRegistry.sol": {
+      "lastModificationDate": 1775301632263,
+      "contentHash": "835deaac1e4b26667afc1b739d4ae1b5",
+      "sourceName": "contracts/StudentRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "StudentRegistry"
+      ]
+    }
+  }
+}

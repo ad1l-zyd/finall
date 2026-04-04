@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Employer Dashboard - Credential Verification</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../shared/styles/main.css">
+  <style>
+    :root {
+      --accent: #059669;
+      --shadow: 0 6px 18px rgba(5, 150, 105, 0.08);
+    }
+    header {
+      background: linear-gradient(90deg, #047857, #059669);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Employer Dashboard</h1>
+    <nav>
+      <button id="nav-verify" class="active" onclick="show('verify')">Verify Certificate</button>
+      <button id="nav-candidates" onclick="show('candidates')">Candidate Verification</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <!-- Left column: main content -->
+      <div>
+
+        <!-- A) Verify Certificate -->
+        <section id="verify" class="card">
+          <h2>Verify Certificate</h2>
+          <div class="small muted">Enter a certificate hash to verify its authenticity and validity on the blockchain.</div>
+
+          <form id="verifyForm">
+            <label>Certificate Hash</label>
+            <input id="certHash" type="text" placeholder="0x... (certificate hash)" required>
+            <button class="btn" type="submit">Verify Certificate</button>
+          </form>
+
+          <div id="verifyResult" style="margin-top:12px"></div>
+        </section>
+
+        <!-- B) Candidate Verification -->
+        <section id="candidates" class="card" style="display:none">
+          <h2>Candidate Verification</h2>
+          <div class="small muted">Verify applicant credentials and certificates.</div>
+
+          <form id="candidateForm">
+            <label>Candidate Email</label>
+            <input id="candidateEmail" type="email" placeholder="candidate@example.com" required>
+
+            <label>Search Method</label>
+            <select id="searchMethod" required>
+              <option value="">-- Select Method --</option>
+              <option value="hash">By Certificate Hash</option>
+              <option value="institution">By Institution</option>
+            </select>
+
+            <div id="searchFields" style="margin-top:12px"></div>
+
+            <button class="btn" type="submit">Search Credentials</button>
+          </form>
+
+          <div id="candidateResult" style="margin-top:12px"></div>
+        </section>
+
+      </div>
+
+      <!-- Right column: info -->
+      <aside>
+        <div class="card">
+          <h3>Wallet Status</h3>
+          <div id="walletAddr" class="muted">Wallet: not connected</div>
+          <div id="network" class="muted" style="margin-top:6px">Network: unknown</div>
+          <div style="margin-top:12px">
+            <button class="btn" id="connectWalletBtn">Load Wallet</button>
+            <button class="btn ghost" id="clearKeyBtn">Forget Key</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>About</h3>
+          <div class="muted">
+            This employer dashboard allows you to verify candidate credentials and certificates issued on the blockchain.
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer>Employer Dashboard • Candidate credential verification</footer>
+
+  <!-- Shared libraries and utilities -->
+  <script src="../shared/libs/ethers.umd.min.js"></script>
+  <script src="../shared/config.js"></script>
+  <script src="../shared/utils/blockchain.js"></script>
+  <script src="../shared/utils/ui.js"></script>
+
+  <!-- Employer-specific scripts -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>

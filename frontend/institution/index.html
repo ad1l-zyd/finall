@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Institution Dashboard - Credential Verification</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../shared/styles/main.css">
+  <style>
+    :root {
+      --accent: #2b6cb0;
+      --shadow: 0 6px 18px rgba(43, 76, 120, 0.08);
+    }
+    header {
+      background: linear-gradient(90deg, #1f4f9a, #2b6cb0);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Institution Dashboard</h1>
+    <nav>
+      <button id="nav-reg" class="active" onclick="show('registry')">Institution Registry</button>
+      <button id="nav-up" onclick="show('upload')">Upload Certificate</button>
+      <button id="nav-rv" onclick="show('remove')">Remove Certificate</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <!-- Left column: main content -->
+      <div>
+
+        <!-- A) Institution Registry -->
+        <section id="registry" class="card">
+          <h2>Institution Registry</h2>
+
+          <!-- New Registry -->
+          <div style="margin-top:12px">
+            <h3>New Registry</h3>
+            <form id="newRegistryForm">
+              <label>Name</label>
+              <input id="instName" type="text" placeholder="Institution name (e.g., ABC University)" required>
+
+              <label>Physical Address</label>
+              <input id="instPhysicalAddr" type="text" placeholder="Street, City, Country" required>
+
+              <label>Ethereum Public Address</label>
+              <input id="instPublicAddr" type="text" placeholder="0x..." required>
+
+              <button class="btn" type="submit">Send Request</button>
+              <div class="note">Submitting will call <strong>registerInstitution</strong> on-chain (DID generated automatically).</div>
+            </form>
+          </div>
+
+          <hr>
+
+          <!-- Status -->
+          <div>
+            <h3>Status</h3>
+            <form id="statusForm">
+              <label>Physical Address</label>
+              <input id="statusPhysicalAddr" type="text" placeholder="Enter physical address to check (exact match)">
+              <button class="btn ghost" type="submit">Check Status</button>
+            </form>
+            <div id="statusResult" style="margin-top:12px"></div>
+          </div>
+
+          <hr>
+
+          <!-- Registered Institutions -->
+          <div>
+            <h3>Registered Institutions</h3>
+            <button id="listInstitutionsBtn" class="btn ghost">Show All Registered Institutions</button>
+            <ul id="institutionsList" class="list" style="margin-top:12px"></ul>
+          </div>
+        </section>
+
+        <!-- B) Upload Certificate -->
+        <section id="upload" class="card" style="display:none">
+          <h2>Upload Certificate</h2>
+
+          <form id="uploadForm">
+            <label>Certificate JSON or Text</label>
+            <textarea id="certText" placeholder='Paste certificate JSON or text here (or leave blank and upload file)'></textarea>
+
+            <label>Or upload certificate file (JSON / PDF)</label>
+            <input id="certFile" type="file" accept=".json,.pdf,.txt">
+
+            <label>Pinata JWT (optional - if not saved in browser)</label>
+            <input id="pinataJwt" type="password" placeholder="eyJhbGciOiJIUzI1NiIs..." title="Get from https://app.pinata.cloud/developers/api-keys">
+            <button class="btn ghost" id="savePinataBtn" type="button">Save JWT to Browser</button>
+
+            <label>IPFS CID (optional - leave blank to auto-upload)</label>
+            <input id="ipfsCid" type="text" placeholder="Qm... (leave blank to automatically upload to Pinata)">
+
+            <div style="display:flex;gap:10px;margin-top:12px">
+              <button class="btn" id="issueBtn" type="submit">Issue Certificate (on-chain)</button>
+              <button class="btn ghost" id="previewHashBtn" type="button">Preview Certificate Hash</button>
+            </div>
+
+            <div id="uploadResult" style="margin-top:12px" class="muted"></div>
+            <div class="note">The certificate will be automatically uploaded to Pinata IPFS unless you provide a CID. Your Pinata JWT can be saved in browser storage.</div>
+          </form>
+        </section>
+
+        <!-- C) Remove Certificate -->
+        <section id="remove" class="card" style="display:none">
+          <h2>Remove Certificate</h2>
+
+          <form id="removeCertForm">
+            <label>Certificate Hash (hex)</label>
+            <input id="revokeHash" type="text" placeholder="0x... or raw string to hash">
+
+            <label>Reason (optional)</label>
+            <input id="revokeReason" type="text" placeholder="Optional reason for revocation">
+
+            <button class="btn" type="submit">Revoke Certificate</button>
+            <div id="revokeResult" style="margin-top:12px" class="muted"></div>
+          </form>
+        </section>
+
+      </div>
+
+      <!-- Right column: quick actions / info -->
+      <aside>
+        <div class="card">
+          <h3>Quick Actions</h3>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button class="btn ghost" onclick="show('registry')">Registry</button>
+            <button class="btn ghost" onclick="show('upload')">Upload</button>
+            <button class="btn ghost" onclick="show('remove')">Revoke</button>
+          </div>
+          <div style="margin-top:12px" class="small muted">
+            This page connects directly to your Hardhat node. Provide a local private key when prompted.
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Status</h3>
+          <div id="walletAddr" class="muted">Wallet: not connected</div>
+          <div id="network" class="muted" style="margin-top:6px">Network: unknown</div>
+          <div style="margin-top:12px">
+            <button class="btn" id="connectWalletBtn">Load Local Wallet</button>
+            <button class="btn ghost" id="clearKeyBtn" style="margin-left:8px">Forget Key</button>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </main>
+
+  <footer>Institution Dashboard • On-chain registry & certificate issuance</footer>
+
+  <!-- Shared libraries and utilities -->
+  <script src="../shared/libs/ethers.umd.min.js"></script>
+  <script src="../shared/config.js"></script>
+  <script src="../shared/utils/blockchain.js"></script>
+  <script src="../shared/utils/ui.js"></script>
+
+  <!-- Institution-specific scripts -->
+  <script src="js/registry.js"></script>
+  <script src="js/certificate.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
