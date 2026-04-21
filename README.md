@@ -1,4 +1,3 @@
-Sure thing! Here is the entire README content rendered as plain text for easy copying.
 # Blockchain-Based Credential Verification System
 A complete web application for blockchain-based credential verification with zero-knowledge proofs, implementing a multi-step certificate issuance and verification process.
 ## Architecture Overview
