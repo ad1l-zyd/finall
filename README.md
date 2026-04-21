@@ -1,7 +1,8 @@
+
 # Blockchain-Based Credential Verification System
-A complete web application for blockchain-based credential verification with zero-knowledge proofs, implementing a multi-step certificate issuance and verification process.
+A complete web application for blockchain-based credential verification, implementing a multi-step certificate issuance and verification process.
 ## Architecture Overview
-The system follows these 12 steps for complete credential verification:
+The system follows these 10 steps for complete credential verification:
  1. Institution Registration Request - Institution registers in portal
  2. Admin Approval - Admin approves institution
  3. Blockchain Registration - Institution added to blockchain registry
@@ -11,9 +12,7 @@ The system follows these 12 steps for complete credential verification:
  7. Certificate Hashing - Certificate hashed and added to JSON
  8. IPFS Storage - Certificate stored in IPFS, CID generated
  9. Blockchain CID - CID registered on blockchain
- 10. Verification Portal - Employer enters CID on verifier
- 11. Verification Display - Partial details shown
- 12. ZKP Request/Response - Age and CGPA requirement verified via zero-knowledge proofs
+ 10. Verification Portal - Employer enters CID on verifier to view details
 ## Project Structure
 project-root/
 ├── backend/ (Node.js + Hardhat backend)
@@ -40,7 +39,6 @@ project-root/
 │   │   ├── blockchain.js
 │   │   ├── crypto.js
 │   │   ├── ipfs.js
-│   │   ├── zkp.js
 │   │   └── storage.js
 │   ├── server.js
 │   ├── package.json
@@ -116,8 +114,6 @@ Institution API (/api/institution):
 Employer API (/api/employer):
  * POST /register
  * POST /verify-certificate
- * POST /request-zkp-verification
- * GET /zkp-status/:id
 Blockchain API (/api/blockchain):
  * GET /chain-info
  * GET /contracts
@@ -128,22 +124,11 @@ Utility API (/api/utility):
  * GET /ipfs-status
  * POST /ipfs-upload-json
  * GET /ipfs-retrieve/:cid
- * POST /zkp-cgpa-proof
- * POST /zkp-age-proof
  * GET /status
-## Zero-Knowledge Proofs
-The system implements simplified ZKP for proving attributes without revealing sensitive data.
-CGPA Proof Example:
-POST /api/utility/zkp-cgpa-proof
-Input: actualCGPA, minCGPA, nonce
-Age Proof Example:
-POST /api/utility/zkp-age-proof
-Input: birthDate, minAge, nonce
 ## Data Storage
 The backend uses JSON-based storage for development:
  * data/institutions/
  * data/certificates/
- * data/zkp-proofs/
 ## Security Considerations
  1. Private Keys: Use environment variables
  2. CORS: Configure CORS_ORIGIN in .env
